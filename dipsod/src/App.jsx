@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style/index.css";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Header from "./components/Header";
@@ -11,6 +11,7 @@ import NotFound from "./pages/notFound";
 import Footer from "./components/Footer";
 import InfoAddon from "./components/Info";
 import Questens from "./pages/questensPage";
+import Preloader from "./components/pre-loader";
 
 // Создаем компонент для страниц с хедером, футером и содержанием
 const LayoutWithHeader = () => {
@@ -25,6 +26,20 @@ const LayoutWithHeader = () => {
 };
 
 const App = () => {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Preloader />;
+
+
   return (
     <div>
       <BrowserRouter>
