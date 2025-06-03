@@ -7,4 +7,4 @@
 # Localization files
 /dipsod/public/locales/
 /dipsod/build/locales/
-/dipsod/i18n.jsx
+/dipsod/src/i18n.jsx
