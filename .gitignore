@@ -1,11 +1,10 @@
-# virtual space
-.venv
+# Virtual environment
+.venv/
 
-# frontend
-dipsod/
-node_modules
-public/locales/
-build/locales/
-i18n.jsx
+# Frontend dependencies
+/dipsod/node_modules/
 
-# backend
+# Localization files
+/dipsod/public/locales/
+/dipsod/build/locales/
+/dipsod/i18n.jsx
