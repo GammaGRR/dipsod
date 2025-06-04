@@ -1286,8 +1286,13 @@ input,
     linear-gradient(to right, white 85%, transparent 15%);
   padding-right: 40px;
   color: #757575;
+  padding: 12px 20px;
+  border: 2px solid #ecf0f1;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
 }
-#select__group,
+#select__group:focus,
 input:focus {
   outline: none;
   border-color: #D1AD84;
