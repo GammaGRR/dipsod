@@ -1,9 +1,0 @@
-.user-panel img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-}
-.user-panel {
-    display: flex;
-    align-items: center;
-}
