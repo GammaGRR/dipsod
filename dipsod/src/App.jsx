@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./style/index.css";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import Header from "./components/Header";
 import Service from "./pages/service";
 import AboutUs from "./pages/aboutUs";
@@ -25,38 +31,43 @@ const LayoutWithHeader = () => {
   );
 };
 
-const App = () => {
-
+const WrapperWithLoading = ({ children }) => {
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
+    setLoading(true);
+
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [location.pathname]);
 
-  if (loading) return <Preloader />;
+  return loading ? <Preloader /> : children;
+};
 
-
+const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Routes>
-          {/* Все страницы с хедером */}
-          <Route element={<LayoutWithHeader />}>
-            <Route path="/" element={<Main />} />
-            <Route path="/service" element={<Service />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/aboutUs" element={<AboutUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/questens" element={<Questens />} />
-          </Route>
+        <WrapperWithLoading>
+          <Routes>
+            {/* Все страницы с хедером */}
+            <Route element={<LayoutWithHeader />}>
+              <Route path="/" element={<Main />} />
+              <Route path="/service" element={<Service />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/aboutUs" element={<AboutUs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/questens" element={<Questens />} />
+            </Route>
 
-          {/* Страницы без хедера */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* Страницы без хедера */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </WrapperWithLoading>
       </BrowserRouter>
     </div>
   );
