@@ -1,0 +1,15 @@
+# Virtual space
+.venv/
+
+# Frontend dependencies
+node_modules/
+
+# Localization files
+locales/
+i18n.jsx
+
+# Django cache
+__pycache__/
+
+# Other
+/Диплом
