@@ -10,7 +10,6 @@ i18n.jsx
 
 # Django cache
 __pycache__/
-**/db.sqlite3
 
 # Other
 /Диплом
