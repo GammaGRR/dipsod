@@ -126,7 +126,7 @@ SITE_ID = 1
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': '/root/dipsod/dipsod-backend/db.sqlite3',
     }
 }
 
@@ -166,7 +166,7 @@ ADMIN_INTERFACE_SETTINGS = {
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["dipsod.ru", "www.dipsod.ru", "194.113.233.25"]
+ALLOWED_HOSTS = ["dipsod.ru", "www.dipsod.ru", "194.113.233.25", 'localhost', '127.0.0.1']
 
 SECURE_SSL_REDIRECT = True
 CSRF_COOKIE_SECURE = True
