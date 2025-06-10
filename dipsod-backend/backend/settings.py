@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-cutvitm!m1o8meht=ahdmu@)9uu_rt+clar70q^9h$+zk5r=po'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dipsod.ru', 'www.dipsod.ru', '194.113.233.25']
 
 
 # Application definition
@@ -56,10 +56,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
-
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
+    "https://dipsod.ru",
+    "https://www.dipsod.ru",
 ]
 
 JAZZMIN_SETTINGS = {
@@ -104,8 +103,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
-        'DIRS': [os.path.join(BASE_DIR, 'frontend')], 
+        'DIRS': [BASE_DIR / 'templates', os.path.join(BASE_DIR, 'frontend')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,8 +130,10 @@ DATABASES = {
     }
 }
 
+CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "https://dipsod.ru",
+    "https://www.dipsod.ru",
 ]
 
 # Password validation
@@ -164,17 +164,17 @@ ADMIN_INTERFACE_SETTINGS = {
     }
 }
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["dipsod.ru", "www.dipsod.ru", "194.113.233.25"]
 
-SECURE_SSL_REDIRECT = False
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
-SECURE_HSTS_SECONDS = 0
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-SECURE_HSTS_PRELOAD = False
+SECURE_HSTS_SECONDS = 3600  # например, 1 час
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 # CSRF и cookie-защита
 # CSRF_COOKIE_SECURE = True  # Только HTTPS
